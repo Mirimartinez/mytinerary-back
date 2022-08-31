@@ -4,9 +4,9 @@ const CityModel = require("../models/City.js")
 const cityController ={
 
     create: async(req,res)=> {
-        const {city, coutry, photo, population, fundation} = req.body
+        const {city, country, photo, population, fundation} = req.body
         try{
-            await new City({city, coutry, photo, population, fundation}).save()
+            await new CityModel(req.body).create()
             res.status(201).json({
                 message:'city created',
                 success: true
@@ -17,11 +17,46 @@ const cityController ={
                 message:'could`t create city' ,
                 success: false
             })
-        
-        
 }          
-}
+},
 
+    read: async(req,res) =>{
+        const {id} = req.params
+         oneCity = {}
+         error = null
+
+
+    try {
+
+       let oneCity = await CityModel.findOne({_id:id})
+
+       if(oneCity) {
+        res.status(200).json({
+            message: "you get one event",
+            reponse: city,
+            sucess: true
+        }) 
+            } else {
+                res.status(404).json({
+                    menssage: "could't find event",
+                    success: false
+                })
+            }
+
+    } catch(error){
+        res.status(400).json({
+            message: "",
+            sucess: false
+        })
+    }
+
+
+
+
+
+
+
+    }
 }
 
 
