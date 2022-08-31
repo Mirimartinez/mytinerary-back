@@ -11,10 +11,10 @@ const schema = new mongoose.Schema({
 
 })
 
-const City = mongoose.model(
+const CityModel = mongoose.model(
     'city',
     schema
 )
 
 
-module.exports = City
+module.exports = CityModel
