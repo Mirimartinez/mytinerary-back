@@ -39,12 +39,14 @@ const cityController ={
 
     try {
 
-       let oneCity = await CityModel.findOne({_id:id})
+       let getCity = await CityModel.findOne({_id:id})
+       console.log(oneCity)
 
-       if(oneCity) {
+       if(getCity) {
         res.status(200).json({
+
             message: "you get one event",
-            reponse: city,
+            reponse: getCity,
             sucess: true
         }) 
             } else {
@@ -57,7 +59,7 @@ const cityController ={
     } catch(error){
         console.log(error)
         res.status(400).json({
-            message: "",
+            message: "Not",
             sucess: false
         })
     }
