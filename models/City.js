@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-const schema = new mongoose.Schema({
+const citiesSchema = new mongoose.Schema({
 
         city:{type: String, required: true},
         country:{type: String, required: true},
@@ -12,8 +12,8 @@ const schema = new mongoose.Schema({
 })
 
 const CityModel = mongoose.model(
-    'city',
-    schema
+    'cities',
+    citiesSchema
 )
 
 
