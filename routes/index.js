@@ -12,7 +12,6 @@ router.get('/', function(req, res, next) {
 });
 
 
-
 router.use('/cities',cityRouter)
 
 
