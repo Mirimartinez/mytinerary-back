@@ -4,7 +4,7 @@ const db = require('./config/database')
 const CityModel = require("./models/City.js")
 
 
-City.create({
+CityModel.create({
     city: "New York",
     coutry:"United States",
     photo:"https://estaticos.muyinteresante.es/uploads/images/test/60b4a8d15cafe819e843397a/empire-state-redes.jpg",
