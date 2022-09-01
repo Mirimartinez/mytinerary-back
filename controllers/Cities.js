@@ -1,7 +1,7 @@
 const CityModel = require("../models/City.js")
 
 
-const cityController ={
+const cityController = {
 
     create: async(req,res)=> {
         console.log(req)
@@ -22,16 +22,88 @@ const cityController ={
                 
             })
             
-}          
+}          },
+
+
+
+put: async(req, res) => {
+
+    const {city, country, photo, population, fundation} = req.body.data
+    let putCity = {}
+    let error = null
+    
+    try{
+        
+        city = await new CityModel({
+            city:city,
+            country:country,
+            photo:photo,
+            population:population,
+            fundation:fundation,
+    }).save()
+    } catch(cacheError) {
+        error = cacheError
+        console.log(error)
+        res.json({
+            response: error ? 'ERROR' : putCity,
+            success: error ? false : true,
+            error: error
+        })
+    }
 },
 
 
 
 
 
+modifyCity: async (req, res) =>{
+const id = req.params.id
+const city = req.body.data
+let citydb = {}
+let error = null
+
+try{
+    citydb = await CityModel.findOneAndUpdate({ _id: id}, city,{new: true})
+} catch (err) { error = err}
+res.json({
+    response: error ? 'ERROR' : citydb,
+    succss: error ? 'ERROR' : citydb,
+    error: error
+}) },
 
 
-    read: async(req,res) =>{
+
+removeCity: async (req, res) => {
+const id = req.params.id
+let city 
+let error = null 
+try{
+    city= await CityModel.findOneAndDelete({ _id: id })
+} catch (err) {error = err}
+res.json({
+    response: error ? 'ERROR' : city,
+    success: error ? false : true,
+    error: error
+})
+},
+
+
+
+read : async (req, res) => {
+    let cities ={}
+    let error = null
+
+    try{
+        cities = await CityModel.find()
+    } catch (err) {error = err}
+    res.json({
+        response: error ? 'ERROR' : {cities},
+        success: error ? false : true,
+        error: error
+    })
+},
+
+    readOne: async(req,res) =>{
         const {id} = req.params
          oneCity = {}
          error = null
@@ -40,7 +112,7 @@ const cityController ={
     try {
 
        let getCity = await CityModel.findOne({_id:id})
-       console.log(oneCity)
+       //console.log(oneCity)
 
        if(getCity) {
         res.status(200).json({
@@ -64,17 +136,14 @@ const cityController ={
         })
     }
 
+  
+
+
+}}
 
 
 
-
-
-
-    }
-}
-
-
-
+    
 
 
 
