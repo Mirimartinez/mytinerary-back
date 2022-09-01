@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const {createCity,readCity,readCities,put,removeCity} = require('../controllers/Cities')
+const {createCity,readCity,readCities,updateCity,removeCity} = require('../controllers/Cities')
 
 
 
@@ -13,9 +13,9 @@ router.get('/',readCities)
 
 router.get('/:id',readCity)
 
-router.get('/:id',put)
+router.patch('/:id',updateCity)
 
-router.get('/:id',removeCity)
+router.delete('/:id',removeCity)
 
 
 module.exports = router
