@@ -1,17 +1,17 @@
 var express = require('express');
 var router = express.Router();
-const {create,readOne,read,put,removeCity} = require('../controllers/Cities')
+const {createCity,readCity,readCities,put,removeCity} = require('../controllers/Cities')
 
 
 
-router.post('/',create)
+router.post('/',createCity)
 
-router.get('/',read)
+router.get('/',readCities)
 
 //localhost4000/city/
 
 
-router.get('/:id',readOne)
+router.get('/:id',readCity)
 
 router.get('/:id',put)
 
