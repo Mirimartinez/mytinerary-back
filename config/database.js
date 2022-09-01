@@ -9,5 +9,5 @@ mongoose.connect(
     }
 )
 
-.then(()=>console.log('connected to database successfully'))
+.then(()=>console.log('Connected to database successfully!'))
 .catch(error=>console.log(error)) 
