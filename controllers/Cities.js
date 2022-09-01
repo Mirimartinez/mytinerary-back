@@ -3,7 +3,7 @@ const CityModel = require("../models/City.js")
 
 const cityController = {
 
-    create: async(req,res)=> {
+    createCity: async(req,res)=> {
         console.log(req)
         //const {city, country, photo, population, fundation} = req.body
 
@@ -11,6 +11,7 @@ const cityController = {
             await new CityModel(req.body).save()
             res.status(201).json({
                 message:'city created',
+                response:CityModel._id,
                 success: true
             })
 
@@ -35,16 +36,22 @@ put: async(req, res) => {
     try{
         
         city = await new CityModel({
+            
+           
             city:city,
             country:country,
             photo:photo,
             population:population,
-            fundation:fundation,
+            fundation:fundation
     }).save()
-    } catch(cacheError) {
+    res.status(200).json({})
+    }
+    
+    catch(cacheError) {
+        
         error = cacheError
         console.log(error)
-        res.json({
+        res.status(400).json({
             response: error ? 'ERROR' : putCity,
             success: error ? false : true,
             error: error
@@ -56,7 +63,7 @@ put: async(req, res) => {
 
 
 
-modifyCity: async (req, res) =>{
+updateCity: async (req, res) =>{
 const id = req.params.id
 const city = req.body.data
 let citydb = {}
@@ -64,6 +71,9 @@ let error = null
 
 try{
     citydb = await CityModel.findOneAndUpdate({ _id: id}, city,{new: true})
+
+
+    
 } catch (err) { error = err}
 res.json({
     response: error ? 'ERROR' : citydb,
@@ -89,7 +99,10 @@ res.json({
 
 
 
-read : async (req, res) => {
+
+
+
+readCities : async (req, res) => {
     let cities ={}
     let error = null
 
@@ -103,7 +116,10 @@ read : async (req, res) => {
     })
 },
 
-    readOne: async(req,res) =>{
+
+
+
+    readCity: async(req,res) =>{
         const {id} = req.params
          oneCity = {}
          error = null
@@ -114,24 +130,26 @@ read : async (req, res) => {
        let getCity = await CityModel.findOne({_id:id})
        //console.log(oneCity)
 
+
        if(getCity) {
         res.status(200).json({
 
-            message: "you get one event",
+            message: "you get one city",
             reponse: getCity,
             sucess: true
         }) 
             } else {
                 res.status(404).json({
-                    menssage: "could't find event",
+                    menssage: "could't find city",
                     success: false
                 })
             }
 
+
     } catch(error){
         console.log(error)
         res.status(400).json({
-            message: "Not",
+            message: "error",
             sucess: false
         })
     }
