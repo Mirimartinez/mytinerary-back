@@ -2,12 +2,12 @@ const mongoose = require('mongoose')
 
 mongoose.connect(
 
-    process.env.MONGO_CONECTION,
+    process.env.MONGO_URL,
     {
         useUnifiedTopology: true,
         useNewUrlParser: true
     }
 )
 
-.then(()=>console.log('connected to database successfully'))
+.then(()=>console.log('Connected to database successfully!'))
 .catch(error=>console.log(error)) 
