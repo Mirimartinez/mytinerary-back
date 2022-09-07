@@ -1,4 +1,4 @@
-var express = require('express');
+var express = require ('express');
 var router = express.Router();
 const cityRouter = require('./city')
 
@@ -9,8 +9,12 @@ router.get('/', function(req, res, next) {
 });
 
 
+<<<<<<< HEAD
+router.use('/cities',cityRouter)
+=======
 
 router.use('/city',cityRouter)
+>>>>>>> 0e93de36284100e31481f501bd952a4a2217c957
 
 
 
