@@ -1,20 +1,19 @@
-const mongoose = require('mongoose')
+const mongoose = require ('mongoose')
 
 
-const citiesSchema = new mongoose.Schema({
+const schema = new mongoose.Schema({
 
         city:{type: String, required: true},
-        country:{type: String, required: true},
+        coutry:{type: String, required: true},
         photo:{type: String, required: true},
         population:{type: Number, required: true},
-        fundation:{type: Date, required: true},
-        description:{type: String, required: false}
+        fundation:{type: Date, required: true}
 
 })
 
 const CityModel = mongoose.model(
-    'cities',
-    citiesSchema
+    'city',
+    schema
 )
 
 

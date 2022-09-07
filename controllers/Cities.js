@@ -1,18 +1,19 @@
-const CityModel = require("../models/City.js")
+const CityModel = require ("../models/City.js")
 
 
 const cityController = {
 
     createCity: async(req,res)=> {
         console.log(req)
-        
+        //const {city, country, photo, population, fundation} = req.body
 
         try{
-            await new CityModel(req.body).save()
+            city = await new CityModel(req.body).save()
             res.status(201).json({
                 message:'city created',
-                response:CityModel._id,
-                success: true
+                response: city._id,
+                success: true,
+                id : city._id
             })
 
         } catch (error){
@@ -20,11 +21,42 @@ const cityController = {
             res.status(400).json({
                 message:'could`t create city' ,
                 success: false
-                
+
             })
-            
+
 }          },
 
+put: async(req, res) => {
+
+    const {city, country, photo, population, fundation} = req.body.data
+    let putCity = {}
+    let error = null
+
+    try{
+
+        city = await new CityModel({
+
+
+            city:city,
+            country:country,
+            photo:photo,
+            population:population,
+            fundation:fundation
+    }).save()
+    res.status(200).json({})
+    }
+
+    catch(cacheError) {
+
+        error = cacheError
+        console.log(error)
+        res.status(400).json({
+            response: error ? 'ERROR' : putCity,
+            success: error ? false : true,
+            error: error
+        })
+    }
+},
 
 
 
@@ -39,46 +71,30 @@ let error = null
 try{
     citydb = await CityModel.findOneAndUpdate({ _id: id}, city,{new: true})
 
-    if (citydb){
-        res.status(200).json({
-            message:"the city was updated successfully",
-            response :citydb,
-            succes: true,
-        })
-    }else {
-        res.status(404).json({
-            message: "No city found",
-            succes: false
-        })
-    }
-    
-} catch (error) {
-        console.log(error)
-        res.status(400).json({
-    message:"Error",
-    succss: true,
-})
-}},
+
+
+} catch (err) { error = err}
+res.json({
+    response: error ? 'ERROR' : citydb,
+    succss: error ? 'ERROR' : citydb,
+    error: error
+}) },
 
 
 
 removeCity: async (req, res) => {
 const id = req.params.id
-let city 
+let city= {}
 let error = null 
 try{
     city= await CityModel.findOneAndDelete({ _id: id })
-    res.status(200).json({
-        message: "city delated",
-        succes: true,
-    })
-} catch (error) {
-    console.log(error)
-res.status(404).json({
-    message: "Error",
-    succes: false,
+} catch (err) {error = err}
+res.json({
+    response: error ? 'ERROR' : city,
+    success: error ? false : true,
+    error: error
 })
-}},
+},
 
 
 
@@ -86,29 +102,11 @@ res.status(404).json({
 
 
 readCities : async (req, res) => {
-    const query = req.query
-    let cities
-
-    if(query.city){
-        let filterString = new FilterString('^${query.city}',"i")
-        query.city = filterString
-    }
+    let cities ={}
+    let error = null
 
     try{
-        Cities = await CityModel.find(query? query:null)
-        if(Cities) {
-            res.status(200).json({
-                message: "the following was found",
-                response: cities,
-                succes: true,
-            })
-        } else {
-            res.status(404).json({
-                menssage: "the city was not found",
-                succes: false,
-            })
-        }
-
+        cities = await CityModel.find()
     } catch (err) {error = err}
     res.json({
         response: error ? 'ERROR' : {cities},
@@ -117,10 +115,7 @@ readCities : async (req, res) => {
     })
 },
 
-
-
-
-    readCity: async(req,res) =>{
+readCity: async(req,res) =>{
         const {id} = req.params
          oneCity = {}
          error = null
@@ -155,11 +150,10 @@ readCities : async (req, res) => {
         })
     }
 
-  
 
 
 }}
 
-
-
 module.exports = cityController
+
+
