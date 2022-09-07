@@ -8,11 +8,12 @@ const cityController = {
         //const {city, country, photo, population, fundation} = req.body
 
         try{
-            await new CityModel(req.body).save()
+            city = await new CityModel(req.body).save()
             res.status(201).json({
                 message:'city created',
-                response:CityModel._id,
-                success: true
+                response: city._id,
+                success: true,
+                id : city._id
             })
 
         } catch (error){
@@ -83,7 +84,7 @@ res.json({
 
 removeCity: async (req, res) => {
 const id = req.params.id
-let city 
+let city= {}
 let error = null 
 try{
     city= await CityModel.findOneAndDelete({ _id: id })
