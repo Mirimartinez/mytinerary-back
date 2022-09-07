@@ -7,7 +7,7 @@ const ItineraryModel = require("./models/City.js")
 ItineraryModel.create(
     {
     name:"Top of the rock observation deck",
-    user:"",
+    user:"Anne Hathaway",
     city:"New York",
     price:"34",
     likes:[],
@@ -16,7 +16,7 @@ ItineraryModel.create(
 },
 {
     name:"Staten Island Ferry",
-    user:"",
+    user:"Dwayne Johnson",
     city:"New York",
     price:"30",
     likes:[],
@@ -25,7 +25,7 @@ ItineraryModel.create(
 },
 {
     name:"One World Observatory",
-    user:"",
+    user:"Steven Tyler",
     city:"New York",
     price:"38",
     likes:[],
@@ -34,7 +34,7 @@ ItineraryModel.create(
 },
 {
     name:"Visit to the Eiffel Tower",
-    user:"",
+    user:"Anne Hathaway",
     city:"Paris",
     price:"26",
     likes:[],
@@ -43,7 +43,7 @@ ItineraryModel.create(
 },
 {
     name:"The Louvre tour",
-    user:"",
+    user:"Anne Hathaway",
     city:"Paris",
     price:"15",
     likes:[],
@@ -52,7 +52,7 @@ ItineraryModel.create(
 },
 {
     name:"Ride the London Eye",
-    user:"",
+    user:"Dwayne Johnson",
     city:"London",
     price:"27",
     likes:[],
@@ -61,7 +61,7 @@ ItineraryModel.create(
 },
 {
     name:"Westminster Abbey",
-    user:"",
+    user:"Steven Tyles",
     city:"London",
     price:"24",
     likes:[],
@@ -70,7 +70,7 @@ ItineraryModel.create(
 },
 {
     name:"Full-Day Mount Fuji and Kawaguchi Lake Tour with Lunch",
-    user:"",
+    user:"Anne Hathaway",
     city:"Tokyo",
     price:"65",
     likes:[],
@@ -79,7 +79,7 @@ ItineraryModel.create(
 },
 {
     name:"Universal Studios Hollywood",
-    user:"",
+    user:"Dwayne Johnson",
     city:"Los Angeles",
     price:"118",
     likes:[],
@@ -88,7 +88,7 @@ ItineraryModel.create(
 },
 {
     name:"Isla Mujeres Catamaran Tour",
-    user:"",
+    user:"Steven Tyler",
     city:"Cancun",
     price:"60",
     likes:[],
@@ -97,7 +97,7 @@ ItineraryModel.create(
 },
 {
     name:"Royal Palace Guided Tour",
-    user:"",
+    user:"Dwayne Johnson",
     city:"Turin",
     price:"55",
     likes:[],
