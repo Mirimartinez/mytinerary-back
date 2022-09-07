@@ -1,4 +1,4 @@
-const CityModel = require("../models/City.js")
+const CityModel = require ("../models/City.js")
 
 
 const cityController = {
@@ -155,3 +155,5 @@ readCity: async(req,res) =>{
 }}
 
 module.exports = cityController
+
+
