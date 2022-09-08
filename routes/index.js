@@ -1,6 +1,10 @@
 var express = require ('express');
 var router = express.Router();
 const cityRouter = require('./cities')
+const authRouter = require('./auth')
+const itinerariesRouter = require('./itineraries')
+const activitiesRouter = require('./activities')
+const commentRouter = require('./comment')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -10,17 +14,9 @@ router.get('/', function(req, res, next) {
 
 
 router.use('/cities',cityRouter)
-
-
-/* router.get('/:id', function(req, res, next) {
-  
-  res.json({
-    id : req.params.id
-  });
-}); */
-
-
-
-
+router.use('/auth', authRouter)
+router.use('/itineraries', itinerariesRouter)
+router.use('/activities', activitiesRouter)
+router.use('/comments', commentRouter)
 
 module.exports = router;
