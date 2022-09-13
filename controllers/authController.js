@@ -1,6 +1,7 @@
 const Auth = require('../models/User')
 const crypto = require('crypto')
 const bcryptjs = require('bcryptjs')
+const sendMail = require('./sendMail')
 
 const authController = {
     create: async(req, res) =>{
@@ -45,6 +46,7 @@ const authController = {
                 if(from === 'form'){
                     password = bcryptjs.hashSync(password, 10)
                     user = await new Auth({name, lastName, mail, password:[password], photo, country,from:[from], logged, verified, code}).save();
+                    sendMail(mail, code)
                     res.status(201).json({
                         message: " User Signed Up from form",
                         success: true
@@ -93,7 +95,7 @@ const authController = {
                 await user.save()
                 res.redirect(302, 'http://localhost:4000/')
             } else {
-                res.status(400).json({
+                res.status(404).json({
                     message: "couldn't verigy email",
                     success: false
                 })
