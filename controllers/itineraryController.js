@@ -66,6 +66,11 @@ const itineraryController = {
         if(req.query.city){
             query.city = req.query.city
         }
+
+        if(req.query.user){
+            query.user = req.query.user
+        }
+
         try {
             let itineraries = await Itinerary.find(query)
             .populate("user",{name:1, lastName:1, photo:1})
