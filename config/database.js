@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require ('mongoose')
 
 mongoose.connect(
 
@@ -9,5 +9,5 @@ mongoose.connect(
     }
 )
 
-.then(()=>console.log('Connected to database successfully!'))
+.then(()=>console.log('connected to database successfully'))
 .catch(error=>console.log(error)) 
