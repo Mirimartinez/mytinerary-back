@@ -35,7 +35,7 @@ const authController = {
     },
 
     signUp: async(req, res) => {
-        const {name, photo, mail, password, role, from} = req.body
+        let {name, lastName, mail, photo, country, password, from} = req.body
         try{
             let user = await Auth.findOne({mail})
             if(!user){
@@ -54,7 +54,7 @@ const authController = {
                     verified: true;
                     user = await new Auth({name, lastName, mail, password:[password], photo, country,from:[from], logged, verified, code}).save();
                     res.status(201).json({
-                        message: " User Signed Up" + from,
+                        message: " User Signed Up from " + from,
                         success: true
                     })
                 }
@@ -70,7 +70,7 @@ const authController = {
                     user.verified = true;
                     await user.save()
                     res.status(200).json({
-                        message: "User Signed Up" + from,
+                        message: "User Signed Up from " + from,
                         success: true
                     })
                 }
@@ -81,6 +81,26 @@ const authController = {
                 message: "couldn't sign up",
                 success: false
             })
+        }
+    },
+
+    verifyMail: async(req, res) => {
+        const {code} = req.params
+        try{
+            let user = await Auth.findOne({code})
+            if (user) {
+                user.verified = true
+                await user.save()
+                res.redirect(302, 'http://localhost:4000/')
+            } else {
+                res.status(400).json({
+                    message: "couldn't verigy email",
+                    success: false
+                })
+            }
+        } catch(error) {
+            console.log(error);
+            res.status(400).json()
         }
     }
 }
