@@ -10,9 +10,9 @@ const usersSchema = new mongoose.Schema({
         photo:{type: String, required: true},
         country:{type: String, required: true},
         from: [{type: String, required: true}],
-        logged: {type: String, required: true},
-        verified: {type: String, required: true},
-        code: {type: String, required: true},
+        logged: {type: String, required: false},
+        verified: {type: String, required: false},
+        code: {type: String, required: false},
 })
 
 const UserModel = mongoose.model(
