@@ -7,7 +7,7 @@ const ItineraryModel = require("./models/Itinerary")
 ItineraryModel.create(
     {
         name:"Top of the rock observation deck",
-        user:"6319571d8f9f57ddc6a81f8c",
+        user:"6320d762ae321d25253ad1bc",
         city:"63103ae1c8ea1e725dfbd22c",
         price:4,
         likes:[35],
@@ -16,7 +16,7 @@ ItineraryModel.create(
     },
     {
         name:"Staten Island",
-        user:"6319571d8f9f57ddc6a81f8c",
+        user:"6320d762ae321d25253ad1bc",
         city:"63103ae1c8ea1e725dfbd22c",
         price:3,
         likes:[14],
@@ -25,7 +25,7 @@ ItineraryModel.create(
     },
     {
         name:"One World Observatory",
-        user:"6319571d8f9f57ddc6a81f8c",
+        user:"6320d7c6ae321d25253ad1c2",
         city:"63103ae1c8ea1e725dfbd22c",
         price:3,
         likes:[19],
@@ -34,7 +34,7 @@ ItineraryModel.create(
     },
     {
         name:"Eiffel Tower",
-        user:"631d024516daebe0c7bf858c",
+        user:"6320d7c6ae321d25253ad1c2",
         city:"63103ae1c8ea1e725dfbd231",
         price:2,
         likes:[],
@@ -43,7 +43,7 @@ ItineraryModel.create(
     },
     {
         name:"The Museum tour",
-        user:"631d024516daebe0c7bf858c",
+        user:"6320d7c6ae321d25253ad1c2",
         city:"63103ae1c8ea1e725dfbd231",
         price:5,
         likes:[],
@@ -52,7 +52,7 @@ ItineraryModel.create(
     },
     {
         name:"Palace of Versailles",
-        user:"631d024516daebe0c7bf858c",
+        user:"6320d7a7ae321d25253ad1bf",
         city:"63103ae1c8ea1e725dfbd231",
         price:5,
         likes:[],
@@ -61,7 +61,7 @@ ItineraryModel.create(
     },
     {
         name:"London Eye",
-        user:"631d024516daebe0c7bf858c",
+        user:"6320d7a7ae321d25253ad1bf",
         city:"63103ae1c8ea1e725dfbd22f",
         price:2,
         likes:[],
@@ -70,7 +70,7 @@ ItineraryModel.create(
     },
     {
         name:"Buckingham Palace",
-        user:"631d024516daebe0c7bf858c",
+        user:"6320d7a7ae321d25253ad1bf",
         city:"63103ae1c8ea1e725dfbd22f",
         price:2,
         likes:[],
@@ -79,7 +79,7 @@ ItineraryModel.create(
     },
     {
         name:"Harry Potter",
-        user:"631d024516daebe0c7bf858c",
+        user:"6320d7a7ae321d25253ad1bf",
         city:"63103ae1c8ea1e725dfbd22f",
         price:3,
         likes:[],
@@ -88,7 +88,7 @@ ItineraryModel.create(
     },
     {
         name:"Mount Fuji and Kawaguchiko",
-        user:"6319571d8f9f57ddc6a81f8c",
+        user:"6320d762ae321d25253ad1bc",
         city:"63103ae1c8ea1e725dfbd22d",
         price:5,
         likes:[],
@@ -97,7 +97,7 @@ ItineraryModel.create(
     },
     {
         name:"Shinbashi",
-        user:"6319571d8f9f57ddc6a81f8c",
+        user:"6320d762ae321d25253ad1bc",
         city:"63103ae1c8ea1e725dfbd22d",
         price:3,
         likes:[],
@@ -106,7 +106,7 @@ ItineraryModel.create(
     },
     {
         name:"Universal Studios Hollywood",
-        user:"631a376a076cbcfb4a7e5472",
+        user:"6320d762ae321d25253ad1bc",
         city:"63103ae1c8ea1e725dfbd238",
         price:1,
         likes:[],
@@ -115,7 +115,7 @@ ItineraryModel.create(
     },
     {
         name:"Bus tour",
-        user:"631a376a076cbcfb4a7e5472",
+        user:"6320d762ae321d25253ad1bc",
         city:"63103ae1c8ea1e725dfbd238",
         price:1,
         likes:[],
@@ -124,7 +124,7 @@ ItineraryModel.create(
     },
     {
         name:"Isla Mujeres",
-        user:"631a376a076cbcfb4a7e5472",
+        user:"6320d7a7ae321d25253ad1bf",
         city:"63103ae1c8ea1e725dfbd23b",
         price:4,
         likes:[],
@@ -133,7 +133,7 @@ ItineraryModel.create(
     },
     {
         name:"Chichen Itza",
-        user:"631a376a076cbcfb4a7e5472",
+        user:"6320d7a7ae321d25253ad1bf",
         city:"63103ae1c8ea1e725dfbd23b",
         price:2,
         likes:[],
@@ -142,7 +142,7 @@ ItineraryModel.create(
     },
     {
         name:"Turin's Royal Palace",
-        user:"631d024516daebe0c7bf858c",
+        user:"6320d7a7ae321d25253ad1bf",
         city:"6310e83947b1f91d97174ae9",
         price:5,
         likes:[],
@@ -151,7 +151,7 @@ ItineraryModel.create(
     },
     {
         name:"Sydney Opera House",
-        user:"631d024516daebe0c7bf858c",
+        user:"6320d7a7ae321d25253ad1bf",
         city:"63103ae1c8ea1e725dfbd232",
         price:3,
         likes:[],
@@ -160,7 +160,7 @@ ItineraryModel.create(
     },
     {
         name:"Royal Palace and Del Prado museum",
-        user:"631a376a076cbcfb4a7e5472",
+        user:"6320d7a7ae321d25253ad1bf",
         city:"63103ae1c8ea1e725dfbd22e",
         price:3,
         likes:[],

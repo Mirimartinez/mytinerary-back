@@ -18,12 +18,43 @@ const activityController = {
         }
     },
 
+    getActivity: async (req, res) => {
+        const {id} = req.params
+
+        if(req.query.itinerary){
+            query.itinerary = req.query.itinerary
+        }
+
+        try{
+            let activity = await Activity.findOne({_id:id})
+            if(activity){
+                res.status(200).json({
+                    message: "activity found",
+                    response: activity,
+                    success: true
+                })
+            } else {
+                res.status(400).json({
+                    message: "Couldn't find activity",
+                    success: false
+                })
+            }
+        } catch(error){
+            console.log(error)
+            res.status(400).json({
+                message: "Error",
+                success: false
+            })
+        }
+    },
+
     all: async(req, res) => {
         let query = {}
 
         if(req.query.itinerary){
             query.itinerary = req.query.itinerary
         }
+
         try {
             let activities = await Activity.find(query)
             .populate("itinerary",{name:1})
