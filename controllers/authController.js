@@ -96,7 +96,7 @@ const authController = {
                 res.redirect(302, 'http://localhost:4000/')
             } else {
                 res.status(404).json({
-                    message: "couldn't verigy email",
+                    message: "couldn't verify email",
                     success: false
                 })
             }
@@ -104,7 +104,92 @@ const authController = {
             console.log(error);
             res.status(400).json()
         }
-    }
+    },
+        
+    signIn: async (req, res) => {
+        const {email, password, from} = req.body
+        try {
+            const user = await User.findOne({email})
+            if (!user) {
+                res.status(404).json ({
+                    success: false,
+                    message: "User doesn't exist, signup please"
+                })
+            } else if(user.verified) {
+                const checkPass = user.password.filter(passwordElement => bcryptjs.compareSync(password, passwordElement))
+
+                if(from === 'form'){ 
+
+                    if(checkPass.length > 0){ 
+
+                        const loginUser = {
+                            id: user._id,
+                            name: user.name,
+                            lastName: user.lastName,
+                            country: user.country,
+                            email: user.email,
+                            role: user.role,
+                            from: user.from,
+                            photo: user.photo
+                        }
+
+                        user.logged = true
+                        await user.save()
+                        res.status(200).json({
+                            success: true,
+                            response: {user: loginUser},
+                            message: 'Welcome ' + user.name
+                        })
+                    }else{ 
+                        res.status(400).json({
+                            success: false,
+                            message: 'Username or password incorrect'
+                        })
+                    }
+
+                } else { //si el usuario intenta ingresar por redes sociales
+                    if(checkPass.length > 0){ //si contraseña coincide 
+
+                        const loginUser = {
+                            id: user._id,
+                            name: user.name,
+                            lastName: user.lastName,
+                            country: user.country,
+                            email: user.email,
+                            role: user.role,
+                            from: user.from,
+                            photo: user.photo
+                        }
+                        user.logged = true
+                        await user.save()
+                        res.status(200).json({
+                            success: true,
+                            response: {user: loginUser},
+                            message: 'Welcome' + user.name
+                        })
+                    }else{ // si contraseña no coincide
+                        res.status(400).json({
+                            success: false,
+                            message: 'Invalid credentials'
+                        })
+                    }
+                }
+            } else {// Si usuario existe pero no esta verificado
+                res.status(401).json({
+                    success: false,
+                    message: 'Verify your email and try again, please'
+                })
+            }
+        } catch (error) {
+            console.log(error);
+            res.status(400).json({
+                success: false,
+                message: 'Houston, we have a problem. Please try again later'
+            })
+        }
+    },
+
+
 }
 
 module.exports = authController
