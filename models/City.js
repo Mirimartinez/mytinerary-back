@@ -17,7 +17,12 @@ const schema = new mongoose.Schema({
         },
         photo:{
             type: String, 
-            required: true
+            required: true,
+            validate: function (value) {
+                if (! value.startsWith('http')) {
+                    throw new Error('La URL debe comenzar con http')
+                }
+            }
         },
         population:{
             type: Number, 
