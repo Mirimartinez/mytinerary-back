@@ -26,13 +26,17 @@ const usersSchema = new mongoose.Schema({
             type: String, 
             required: true,
             minlength: 6,
-            maxlength: 16
+            maxlength: 26
         }]
         ,
         photo:{
             type: String, 
-            required: true
-
+            required: true,
+            validate: function (value) {
+                if (! value.startsWith('http')) {
+                    throw new Error('La URL debe comenzar con http')
+                }
+            }
         },
 
         country:{
@@ -45,8 +49,8 @@ const usersSchema = new mongoose.Schema({
         from: [{
             type: String, 
             required: true
-        }]
-        ,
+        }],
+
         logged: {
             type: String, 
             required: false
