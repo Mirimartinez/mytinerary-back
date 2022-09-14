@@ -8,108 +8,109 @@ ActivityModel.create({
     //New York
     "name":"Full access: Ground Zero, Memorial and museum",
     "photo":"https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/72/12/16.jpg",
-    "itinerary":"63215246ef8a51157aafa28b"
+    "itinerary":"632169c7cf58505dcc7adccc"
 },
 {
     "name":"FDNY Memorial Wall",
     "photo":"https://media-cdn.tripadvisor.com/media/photo-o/06/5c/48/b0/fdny-memorial.jpg",
-    "itinerary":"63215246ef8a51157aafa28b"
+    "itinerary":"632169c7cf58505dcc7adccc"
 },
 {
     "name":"Memorial monument 9/11",
     "photo":"https://media-cdn.tripadvisor.com/media/photo-m/1280/14/b3/aa/b3/911-memorial-nyc.jpg",
-    "itinerary":"63215246ef8a51157aafa28b"
+    "itinerary":"632169c7cf58505dcc7adccc"
 },
 {
     "name":"Statue of Liberty",
     "photo":"https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/25/18/e9.jpg",
-    "itinerary":"63215246ef8a51157aafa28a"
+    "itinerary":"632169c7cf58505dcc7adccb"
 },
 {
     "name":"Circle Line to Ellis Island",
     "photo":"https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/0a/5d/f1.jpg",
-    "itinerary":"63215246ef8a51157aafa28a"
+    "itinerary":"632169c7cf58505dcc7adccb"
 },
 {
     "name":"Helicopter ride",
     "photo":"https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/09/93/f1/d1.jpg",
-    "itinerary":"63215246ef8a51157aafa28a"
+    "itinerary":"632169c7cf58505dcc7adccb"
 },
 {
     "name":"SUMMIT One Vanderbilt experience",
     "photo":"https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0d/a5/3d/62.jpg",
-    "itinerary":"63215246ef8a51157aafa289"
+    "itinerary":"632169c7cf58505dcc7adcca"
 },
 {
     "name":"The Edge",
     "photo":"https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0a/8a/68/e6.jpg",
-    "itinerary":"63215246ef8a51157aafa289"
+    "itinerary":"632169c7cf58505dcc7adcca"
 },
 {
     "name":"Empire State Building",
     "photo":"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/25/39/9b/27/caption.jpg?w=1200&h=-1&s=1",
-    "itinerary":"63215246ef8a51157aafa289"
+    "itinerary":"632169c7cf58505dcc7adcca"
 },
 { //Paris
     "name":"Top floor Eiffel tower",
     "photo":"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/25/15/67/96/caption.jpg?w=1100&h=-1&s=1",
-    "itinerary":"63215246ef8a51157aafa28c"
+    "itinerary":"632169c7cf58505dcc7adccd"
 },
 {
     "name":"Seine river cruise ",
     "photo":"https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/19/b4/f2.jpg",
-    "itinerary":"63215246ef8a51157aafa28c"
+    "itinerary":"632169c7cf58505dcc7adccd"
 },
 {
     "name":"Free walking tour to Eiffel tower",
     "photo":"https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/db/8d/37.jpg",
-    "itinerary":"63215246ef8a51157aafa28c"
+    "itinerary":"632169c7cf58505dcc7adccd"
 },
+//Museum Tour
 {
     "name":"Skip the Line Ticket with Private Guided Tour: Louvre Museum",
     "photo":"https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/f9/15/d3.jpg",
-    "itinerary":"63215246ef8a51157aafa28d"
+    "itinerary":"632169c7cf58505dcc7adcce"
 },
 {
     "name":"D'Orsay museum",
     "photo":"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/26/b3/6e/20180601-122841-largejpg.jpg?w=1200&h=-1&s=1",
-    "itinerary":"63215246ef8a51157aafa28d"
+    "itinerary":"632169c7cf58505dcc7adcce"
 },
 {
     "name":"L'Orangerie museum",
     "photo":"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/22/9f/26/caption.jpg?w=1200&h=-1&s=1",
-    "itinerary":"63215246ef8a51157aafa28d"
+    "itinerary":"632169c7cf58505dcc7adcce"
 },
+//Palace of Versailles
 {
     "name":"Walk through Versailles garden",
     "photo":"https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/01/37/a3.jpg",
-    "itinerary":"63215246ef8a51157aafa28e"
+    "itinerary":"632169c7cf58505dcc7adccf"
 },
 {
     "name":"Palace of Versailles, Gardens and Fountain Show Tour",
     "photo":"https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/88/8e/3b.jpg",
-    "itinerary":"63215246ef8a51157aafa28e"
+    "itinerary":"632169c7cf58505dcc7adccf"
 },
 {
     "name":"Versailles Bike Tour with Skip-the-Line Palace Ticket",
     "photo":"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/25/60/ea/c1/caption.jpg?w=1200&h=-1&s=1",
-    "itinerary":"63215246ef8a51157aafa28e"
+    "itinerary":"632169c7cf58505dcc7adccf"
 },
 { // London
     "name":"Priority entrance to the London Eye",
     "photo":"https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0f/36/c2/60.jpg",
-    "itinerary":"63215246ef8a51157aafa28f"
+    "itinerary":"632169c7cf58505dcc7adcd0"
 },
 {
     "name":"London Eye River Cruise",
     "photo":"https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/07/82/70/4c.jpg",
-    "itinerary":"63215246ef8a51157aafa28f"
+    "itinerary":"632169c7cf58505dcc7adcd0"
 },
 {
     "name":"London Eye to London Bridge (River Walk)",
     "photo":"http://www.thelondres.com/wp-content/uploads/2018/08/tower-bridge.jpg",
-    "itinerary":"63215246ef8a51157aafa28f"
-    //632169c7cf58505dcc7adcd0
+    "itinerary":"632169c7cf58505dcc7adcd0"
 },
 {
     "name":"Buckingham Palace",
