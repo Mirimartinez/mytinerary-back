@@ -60,6 +60,32 @@ const itineraryController = {
         }
     },
 
+    getItinerary: async (req, res) => {
+        const {id} = req.params
+        
+        try{
+            let itinerary = await Itinerary.findOne({_id:id})
+            if(itinerary){
+                res.status(200).json({
+                    message: "found itinerary",
+                    response: itinerary,
+                    success: true
+                })
+            } else {
+                res.status(400).json({
+                    message: "couldn't find itinerary",
+                    success: false
+                })
+            }
+        } catch(error){
+            console.log(error)
+            res.status(400).json({
+                message: "Error",
+                success: false
+            })
+        }
+    },
+
     all: async(req, res) => {
         let query = {}
 
@@ -68,7 +94,7 @@ const itineraryController = {
         }
 
         if(req.query.user){
-            query.user = req.query.user
+            query.userName = req.query.user
         }
 
         try {
