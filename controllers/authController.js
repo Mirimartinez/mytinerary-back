@@ -184,12 +184,38 @@ const authController = {
             console.log(error);
             res.status(400).json({
                 success: false,
-                message: 'Houston, we have a problem. Please try again later'
+                message: 'Houston, we have a problem. Please try again'
             })
         }
     },
 
+    signOut: async(req, res) => {
+        const { id } = req.params
 
+        try {
+            let user = await User.findOne({ _id: id })
+            if (user) {
+                user.logged = false
+                await user.save()
+                res.status(200).json({
+                    success: true,
+                    menssage: 'Logged out successfully'
+                })
+            } else {
+                res.status(404).json({
+                    success: false,
+                    message: 'User not found'
+                })
+            }
+        } catch (error) {
+            console.log(error)
+            res.status(400).json({
+                success: false,
+                message: 'Houston, we have a problem. Please try again'
+            })
+
+        }
+    }
 }
 
 module.exports = authController
