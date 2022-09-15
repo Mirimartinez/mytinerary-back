@@ -22,7 +22,7 @@ const cityController = {
 updateCity: async (req, res) => {
     const {id} = req.params
     try{
-        let city = await CityModel.findByIdAndUpdate({_id:id}, req.body, {new: true})
+        let city = await CityModel.findOneAndUpdate({_id:id}, req.body, {new: true})
             if(city){
             res.status(200).json({
                 message: "city updated",
@@ -48,7 +48,7 @@ updateCity: async (req, res) => {
 removeCity: async(req, res) =>{
     const {id} = req.params
     try{
-        let city = await CityModel.findByIdAndDelete({_id:id})
+        let city = await CityModel.findOneAndDelete({_id:id})
         if(city) {
             res.status(200).json({
                 message: "city delete",
