@@ -6,14 +6,14 @@ const cityController = {
         try{
             city = await new CityModel(req.body).save()
             res.status(201).json({
-                message:'city created',
+                message:'City created',
                 response: city._id,
                 success: true,
             })
         } catch (error){
             console.log(error)
             res.status(400).json({
-                message:'could`t create city' ,
+                message:'Could`t create city' ,
                 success: false
         })
     }
@@ -25,20 +25,20 @@ updateCity: async (req, res) => {
         let city = await CityModel.findOneAndUpdate({_id:id}, req.body, {new: true})
             if(city){
             res.status(200).json({
-                message: "city updated",
+                message: "City edited",
                 response:city,
                 success: true
                 })
             }else{
                 res.status(404).json({
-                    message: "couldn't find city",
+                    message: "Could't find city",
                     success: false
                 })
             }
     } catch(error){
         console.log(error)
         res.status(400).json({
-            message: "error",
+            message: "Could't find city",
             success: false
         })
     }
