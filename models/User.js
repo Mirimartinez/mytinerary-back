@@ -25,8 +25,6 @@ const usersSchema = new mongoose.Schema({
         password:[{
             type: String, 
             required: true,
-            minlength: 6,
-            maxlength: 26
         }]
         ,
         photo:{
@@ -34,7 +32,7 @@ const usersSchema = new mongoose.Schema({
             required: true,
             validate: function (value) {
                 if (! value.startsWith('http')) {
-                    throw new Error('La URL debe comenzar con http')
+                    throw new Error('The URL must be start with "http"')
                 }
             }
         },
@@ -64,8 +62,12 @@ const usersSchema = new mongoose.Schema({
         code: {
             type: String, 
             required: false
-        }
+        },
 
+        role: {
+            type: String,
+            required: true
+        }
     })
 
 const UserModel = mongoose.model(
