@@ -26,7 +26,6 @@ const usersSchema = new mongoose.Schema({
             type: String, 
             required: true,
             minlength: 6,
-            maxlength: 26
         }]
         ,
         photo:{
@@ -34,7 +33,7 @@ const usersSchema = new mongoose.Schema({
             required: true,
             validate: function (value) {
                 if (! value.startsWith('http')) {
-                    throw new Error('La URL debe comenzar con http')
+                    throw new Error('URL must start with http')
                 }
             }
         },
