@@ -19,8 +19,7 @@ const schema = new mongoose.Schema({
             type: String, 
             required: true,
             validate: function (value) {
-                if (! value.startsWith('http')) {
-                    throw new Error('La URL debe comenzar con http')
+                if (! value.startsWith('http')) {throw new Error('URL must be start with http')
                 }
             }
         },
