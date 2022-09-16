@@ -33,7 +33,7 @@ const usersSchema = new mongoose.Schema({
             required: true,
             validate: function (value) {
                 if (! value.startsWith('http')) {
-                    throw new Error('URL must start with http')
+                    throw new Error('The URL must be start with "http"')
                 }
             }
         },
@@ -63,8 +63,12 @@ const usersSchema = new mongoose.Schema({
         code: {
             type: String, 
             required: false
-        }
+        },
 
+        role: {
+            type: String,
+            required: true
+        }
     })
 
 const UserModel = mongoose.model(

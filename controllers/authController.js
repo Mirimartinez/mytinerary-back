@@ -36,16 +36,17 @@ const authController = {
     },
 
     signUp: async(req, res) => {
-        let {name, lastName, mail, photo, country, password, from} = req.body
+        let {name, lastName, mail, photo, country, password, from, role} = req.body
         try{
             let user = await Auth.findOne({mail})
             if(!user){
                 let logged = false;
                 let verified = false;
+                let role = 'user'
                 let code = crypto.randomBytes(15).toString('hex')
                 if(from === 'form'){
                     password = bcryptjs.hashSync(password, 10)
-                    user = await new Auth({name, lastName, mail, password:[password], photo, country,from:[from], logged, verified, code}).save();
+                    user = await new Auth({name, lastName, mail, password:[password], photo, country,from:[from], role, logged, verified, code}).save();
                     sendMail(mail, code)
                     res.status(201).json({
                         message: " User Signed Up from form",
@@ -54,7 +55,7 @@ const authController = {
                 } else{
                     password = bcryptjs.hashSync(password, 10);
                     verified: true;
-                    user = await new Auth({name, lastName, mail, password:[password], photo, country,from:[from], logged, verified, code}).save();
+                    user = await new Auth({name, lastName, mail, password:[password], role, photo, country,from:[from], logged, verified, code}).save();
                     res.status(201).json({
                         message: " User Signed Up from " + from,
                         success: true
@@ -107,9 +108,9 @@ const authController = {
     },
         
     signIn: async (req, res) => {
-        const {email, password, from} = req.body
+        const {mail, password, from} = req.body
         try {
-            const user = await User.findOne({email})
+            const user = await Auth.findOne({mail})
             if (!user) {
                 res.status(404).json ({
                     success: false,
@@ -147,8 +148,8 @@ const authController = {
                         })
                     }
 
-                } else { //si el usuario intenta ingresar por redes sociales
-                    if(checkPass.length > 0){ //si contraseña coincide 
+                } else {
+                    if(checkPass.length > 0){
 
                         const loginUser = {
                             id: user._id,
