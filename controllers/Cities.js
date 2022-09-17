@@ -71,13 +71,32 @@ removeCity: async(req, res) =>{
 },
 
 readCities: async (req, res) => {
-    let city
+    const query ={}
+    let cities
+    if(req.query.city){
+        let regExp = new RegExp(`^${req.query.city}`,"i")
+        query.city = regExp
+    }
     try {
-        city = await CityModel.find()
-        res.json(city)
+        cities = await CityModel.find(query)
+        if(cities){
+            res.status(200).json({
+                message: "Found cities following",
+                response: cities,
+                success: true
+            })
+        } else {
+            res.status(400).json({
+                message: "We can't found cities you are following",
+                success: false
+            })
+        }
     } catch (error) {
         console.log(error);
-        res.status(500).json()
+        res.status(500).json({
+            message: error,
+            success: false
+        })
     }
 },
 
