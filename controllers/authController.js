@@ -128,7 +128,7 @@ const authController = {
                             name: user.name,
                             lastName: user.lastName,
                             country: user.country,
-                            email: user.email,
+                            mail: user.mail,
                             role: user.role,
                             from: user.from,
                             photo: user.photo
@@ -156,7 +156,7 @@ const authController = {
                             name: user.name,
                             lastName: user.lastName,
                             country: user.country,
-                            email: user.email,
+                            mail: user.mail,
                             role: user.role,
                             from: user.from,
                             photo: user.photo
@@ -194,7 +194,7 @@ const authController = {
         const { id } = req.params
 
         try {
-            let user = await User.findOne({ _id: id })
+            let user = await Auth.findOne({ _id: id })
             if (user) {
                 user.logged = false
                 await user.save()
