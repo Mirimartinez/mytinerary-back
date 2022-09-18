@@ -1,9 +1,11 @@
 let express = require('express')
 let router = express.Router()
-const {create, all} = require('../controllers/commentController')
+const {createComment, getComment, getAllComments, editComment, deleteComment} = require('../controllers/commentController')
 
 // GET users listing
-router.post('/', create)
-router.get('/', all)
-
+router.post('/', createComment);
+router.get('/', getAllComments);
+router.get('/:id', getComment);
+router.patch('/:id', editComment);
+router.delete('/:id', deleteComment);
 module.exports = router
