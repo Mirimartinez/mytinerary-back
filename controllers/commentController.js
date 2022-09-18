@@ -5,14 +5,14 @@ const commentController = {
         try {
             let comment = await new Comment(req.body).save()
             res.status(201).json({
-                message: "Comment created",
+                message: "KUDOS! Your comment was posted successfully! 🥳",
                 response: comment._id,
                 success: true
             })
         } catch (error) {
             console.log(error)
             res.status(400).json({
-                message: "Couldn't comment created",
+                message: "Couldn't post your comment... 😖",
                 success: false
             })
         }
@@ -25,20 +25,20 @@ const commentController = {
             let comment = await Comment.findOne({ _id: id })
             if (comment) {
                 res.status("200").json({
-                    message: "This is the comment you were looking for",
+                    message: "This is the comment you were looking for! 😌",
                     response: comment,
                     success: true,
                 })
             } else {
                 res.status("404").json({
-                    message: "Couldn't find the comment you wanted",
+                    message: "Couldn't find the comment you wanted... 🧐",
                     success: false,
                 })
             }
         } catch (error) {
             console.log(error)
             res.status("400").json({
-                message: "Error",
+                message: "There is an error... 😧",
                 success: false,
             })
         }
@@ -60,20 +60,20 @@ const commentController = {
             .populate("itinerary",{name:1})
             if (comments) {
                 res.status("200").json({
-                    message: "These are the comments",
+                    message: "These are all the comments! 🤩",
                     response: comments,
                     success: true,
             })
             } else {
                 res.status("404").json({
-                    message: "No comments could be found",
+                    message: "No comments could be found... 🧐",
                     success: false,
                 })
             }
         } catch (error) {
             console.log(error)
             res.status("400").json({
-                message: "Your comment couldn't be added.",
+                message: "There is an error...😧",
                 success: false,
             })
         }
@@ -86,20 +86,20 @@ const commentController = {
             comment = await Comment.findOneAndUpdate({ _id: id }, req.body, { new: true })
             if (comment) {
                 res.status("200").json({
-                    message: "Comment edited successfully",
+                    message: "Your comment was edited successfully! 🤩",
                     response: comment,
                     success: true,
                 })
             } else {
                 res.status("404").json({
-                    message: "Couldn't find the comment you wanted to edit",
+                    message: "Couldn't find the comment you wanted to edit... 🥴",
                     success: false,
                 })
             }
         } catch (error) {
             console.log(error)
             res.status("400").json({
-                message: "Error",
+                message: "There is an error... 😧",
                 success: false,
             })
         }
@@ -110,13 +110,13 @@ const commentController = {
         try {
             await Comment.findOneAndRemove({ _id: id })
             res.status("200").json({
-                message: "Your comment has been deleted",
+                message: "Your comment has been deleted! 😌",
                 success: true,
             })
         } catch (error) {
             console.log(error)
             res.status("400").json({
-                message: "Error",
+                message: "There is an error... 😧",
                 success: false,
             })
         }
