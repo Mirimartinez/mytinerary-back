@@ -6,14 +6,14 @@ const cityController = {
         try{
             city = await new CityModel(req.body).save()
             res.status(201).json({
-                message:'City created',
+                message: "The city has been created successfully! 🥳",
                 response: city._id,
                 success: true,
             })
         } catch (error){
             console.log(error)
             res.status(400).json({
-                message:'Could`t create city' ,
+                message:"Couldn't create city... 😧",
                 success: false
         })
     }
@@ -25,20 +25,20 @@ updateCity: async (req, res) => {
         let city = await CityModel.findOneAndUpdate({_id:id}, req.body, {new: true})
             if(city){
             res.status(200).json({
-                message: "City edited",
+                message: "City updated successfully! 🥳",
                 response:city,
                 success: true
                 })
             }else{
                 res.status(404).json({
-                    message: "Could't find city",
+                    message: "Couldn't find that city... 🧐",
                     success: false
                 })
             }
     } catch(error){
         console.log(error)
         res.status(400).json({
-            message: "Could't find city",
+            message: "An error ocurred trying to update the city 😖",
             success: false
         })
     }
@@ -51,20 +51,20 @@ removeCity: async(req, res) =>{
         let city = await CityModel.findOneAndDelete({_id:id})
         if(city) {
             res.status(200).json({
-                message: "city delete",
+                message: "City deleted successfully! 🥳",
                 response: id,
                 success: true
             })
         } else {
             res.status(404).json({
-                message: "couldn't find city",
+                message: "Couldn't find the city... 😧",
                 success: false
             })
         }
     } catch(error){
         console.log(error)
         res.status(400).json({
-            message: "error",
+            message: "An error ocurred trying to delete the city 😖",
             success: false
         })
     }
@@ -81,20 +81,20 @@ readCities: async (req, res) => {
         cities = await CityModel.find(query)
         if(cities){
             res.status(200).json({
-                message: "Found cities following",
+                message: "These are all the cities 🤩",
                 response: cities,
                 success: true
             })
         } else {
-            res.status(400).json({
-                message: "We can't found cities you are following",
+            res.status(404).json({
+                message: "Couldn't find any city 🧐",
                 success: false
             })
         }
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            message: error,
+            message: "An error ocurred trying to get the cities 😖",
             success: false
         })
     }
@@ -106,20 +106,20 @@ readCity: async (req, res) => {
         let city = await CityModel.findOne({_id:id})
             if(city){
             res.status(200).json({
-                message: "found city",
+                message: "This is the city you were looking for 🤩",
                 response:city,
                 success: true
                 })
             }else{
                 res.status(404).json({
-                    message: "couldn't find city",
+                    message: "Couldn't find that city... 🧐",
                     success: false
                 })
             }
     } catch(error){
         console.log(error)
         res.status(400).json({
-            message: "error",
+            message: "An error ocurred trying to get the city 😖",
             success: false
         })
     }
