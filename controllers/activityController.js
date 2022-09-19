@@ -5,14 +5,14 @@ const activityController = {
         try {
             let activity = await new Activity(req.body).save()
             res.status(201).json({
-                message: "Activity created",
+                message: "Activity created successfully! 🥳",
                 response: activity._id,
                 success: true
             })
         } catch (error) {
             console.log(error)
             res.status(400).json({
-                message: "Couldn't activity created",
+                message: "Couldn't create the activity... 😧",
                 success: false
             })
         }
@@ -29,20 +29,20 @@ const activityController = {
             let activity = await Activity.findOne({_id:id})
             if(activity){
                 res.status(200).json({
-                    message: "activity found",
+                    message: "This is the activity you were looking for 🤩",
                     response: activity,
                     success: true
                 })
             } else {
-                res.status(400).json({
-                    message: "Couldn't find activity",
+                res.status(404).json({
+                    message: "Couldn't find that activity... 🧐",
                     success: false
                 })
             }
         } catch(error){
             console.log(error)
             res.status(400).json({
-                message: "Error",
+                message: "An error ocurred trying to get the activity 😖",
                 success: false
             })
         }
@@ -60,20 +60,20 @@ const activityController = {
             .populate("itinerary",{name:1})
             if (activities) {
                 res.status("200").json({
-                    message: "These are the activities",
+                    message: "These are all the activities 🤩",
                     response: activities,
                     success: true,
             })
             } else {
                 res.status("404").json({
-                    message: "No activities could be found",
+                    message: "Couldn't find any activity 🧐",
                     success: false,
                 })
             }
         } catch (error) {
             console.log(error)
             res.status("400").json({
-                message: "Your activity couldn't be added.",
+                message: "An error ocurred trying to get the activities 😖",
                 success: false,
             })
         }
