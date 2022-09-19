@@ -38,8 +38,10 @@ const sendMail = async (mail, code) => {
         subject: 'MyTinerary confirm account',
         html: `
             <div>
-            <h1>Hola ${mail}</h1>
-            <a href='http://localhost:4000/auth/verify/${code}'>Click to verify!</a>
+            <h1>Hi ${mail}! 🤩</h1>
+            <h3>There's just one more step and you'll be able to enjoy our app!</h3>
+            <a href='http://localhost:4000/auth/verify/${code}'>Click to verify you email!</a>
+            <h3>Thanks! We hope you love it!!</h3>
             </div>
         `
     }

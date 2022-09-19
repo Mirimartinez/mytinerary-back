@@ -38,7 +38,7 @@ const commentController = {
         } catch (error) {
             console.log(error)
             res.status("400").json({
-                message: "There is an error... 😧",
+                message: "An error ocurred trying to get the comment 😖",
                 success: false,
             })
         }
@@ -73,7 +73,7 @@ const commentController = {
         } catch (error) {
             console.log(error)
             res.status("400").json({
-                message: "There is an error...😧",
+                message: "An error ocurred trying to get the comments 😖",
                 success: false,
             })
         }
@@ -99,7 +99,7 @@ const commentController = {
         } catch (error) {
             console.log(error)
             res.status("400").json({
-                message: "There is an error... 😧",
+                message: "An error ocurred trying to edit the comment 😖",
                 success: false,
             })
         }
@@ -116,7 +116,7 @@ const commentController = {
         } catch (error) {
             console.log(error)
             res.status("400").json({
-                message: "There is an error... 😧",
+                message: "An error ocurred trying to delete the comment 😖",
                 success: false,
             })
         }
