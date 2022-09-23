@@ -21,7 +21,7 @@ const itineraryController = {
     update: async(req, res) =>{
         const{id} = req.params
         try{
-            let itinerary = await Itinerary.findByIdAndupdate({_id:id}, req.body, {new: true})
+            let itinerary = await Itinerary.findOneAndUpdate({_id:id}, req.body, {new: true})
             if(itinerary){
             res.status(200).json({
                 message: "City updated successfully! 🥳",
