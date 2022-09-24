@@ -77,6 +77,50 @@ const activityController = {
                 success: false,
             })
         }
+    },
+
+    update: async (req, res) => {
+        const {id} = req.params
+
+        try{
+            let activities = await Activity.findOneAndUpdate({_id:id}, req.body, {new: true})
+            if(activities){
+                res.status(200).json({
+                    message: "Activity updated",
+                    response: activities,
+                    success: true
+                })
+            } else {
+                res.status(404).json({
+                    message: "Could't find activity",
+                    success: false
+                })
+            }
+        }catch(error){
+            console.log(error);
+            res.status(400).json({
+                message: "Error",
+                success: false
+            })
+        }
+    },
+
+    destroy: async (req, res) => {
+        const {id} = req.params
+
+        try{
+            await Activity.findOneAndDelete({_id:id})
+            res.status(200).json({
+                message: "Activity deleted",
+                success: true
+            })
+        } catch(error){
+            console.log(error);
+            res.status(400).json({
+                message: "Error",
+                success: false
+            })
+        }
     }
 }
 
