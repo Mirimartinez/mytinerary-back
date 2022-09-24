@@ -23,7 +23,7 @@ const commentController = {
         const user = req.user.id
 
         try {
-            let result = await validator.validateAsync({comment: textComment,itinerary,user: user.toString()})
+             let result = await validator.validateAsync({comment: textComment,itinerary,user: user.toString()})
             let commentt = await new Comment({comment, itinerary}, user).save()
             res.status(201).json({
                 message: "Comment created",

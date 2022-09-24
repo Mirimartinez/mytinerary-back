@@ -4,7 +4,7 @@ const cityRouter = require('./cities')
 const authRouter = require('./auth')
 const itinerariesRouter = require('./itineraries')
 const activitiesRouter = require('./activities')
-const commentRouter = require('./comment')
+const commentRouter = require('./comments')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
