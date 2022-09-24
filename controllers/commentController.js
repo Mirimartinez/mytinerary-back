@@ -83,10 +83,11 @@ const commentController = {
 
     editComment: async (req, res) => {
         const { id } = req.params
+        console.log(req.body);
         try {
             let comment = await Comment.findOne({_id:id})
             if (comment) {
-            comment = await Comment.findOneAndUpdate({ _id: id }, req.body, { new: true })
+            comment = await Comment.findOneAndUpdate({ _id: id }, {comment: req.body.data}, { new: true })
                 res.status(200).json({
                     message: "Your comment was edited successfully! 🤩",
                     response: comment,
