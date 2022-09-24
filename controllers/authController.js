@@ -243,15 +243,16 @@ const authController = {
     },
 
     signOut: async(req, res) => {
-        const { id } = req.params
+        const { email } = req.params
 
         try {
-            let user = await Auth.findOne({ _id: id })
+            let user = await Auth.findOne({ email: email })
             if (user) {
                 user.logged = false
                 await user.save()
                 res.status(200).json({
                     success: true,
+                    response: user.logged,
                     menssage: 'Logged out successfully 😌'
                 })
             } else {
