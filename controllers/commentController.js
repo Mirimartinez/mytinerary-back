@@ -21,25 +21,50 @@ const commentController = {
     create: async(req,res) => {
         const {comment, itinerary} = req.body
         const user = req.user.id
-
         try {
             let result = await validator.validateAsync({comment: textComment,itinerary,user: user.toString()})
             let commentt = await new Comment({comment, itinerary}, user).save()
             res.status(201).json({
-                message: "Comment created",
-                response: commentt._id,
+                message: "KUDOS! Your comment was posted successfully! 🥳",
+                response: comment._id,
                 success: true
             })
         } catch (error) {
             console.log(error)
             res.status(400).json({
-                message: "Couldn't comment created",
+                message: "Couldn't post your comment... 😖",
                 success: false
             })
         }
     },
 
-    all: async(req, res) => {
+
+    getComment: async (req, res) => {
+        const { id } = req.params
+        try {
+            let comment = await Comment.findOne({ _id: id })
+            if (comment) {
+                res.status("200").json({
+                    message: "This is the comment you were looking for! 😌",
+                    response: comment,
+                    success: true,
+                })
+            } else {
+                res.status("404").json({
+                    message: "Couldn't find the comment you wanted... 🧐",
+                    success: false,
+                })
+            }
+        } catch (error) {
+            console.log(error)
+            res.status("400").json({
+                message: "An error ocurred trying to get the comment 😖",
+                success: false,
+            })
+        }
+    },
+
+    getAllComments: async(req, res) => {
         let query = {}
 
         if(req.query.itinerary){
@@ -56,20 +81,63 @@ const commentController = {
             .populate("itinerary",{name:1})
             if (comments) {
                 res.status("200").json({
-                    message: "These are the comments",
+                    message: "These are all the comments! 🤩",
                     response: comments,
                     success: true,
             })
             } else {
                 res.status("404").json({
-                    message: "No comments could be found",
+                    message: "No comments could be found... 🧐",
                     success: false,
                 })
             }
         } catch (error) {
             console.log(error)
             res.status("400").json({
-                message: "Your comment couldn't be added.",
+                message: "An error ocurred trying to get the comments 😖",
+                success: false,
+            })
+        }
+    },
+
+    editComment: async (req, res) => {
+        const { id } = req.params
+        let comment
+        try {
+            comment = await Comment.findOneAndUpdate({ _id: id }, req.body, { new: true })
+            if (comment) {
+                res.status("200").json({
+                    message: "Your comment was edited successfully! 🤩",
+                    response: comment,
+                    success: true,
+                })
+            } else {
+                res.status("404").json({
+                    message: "Couldn't find the comment you wanted to edit... 🥴",
+                    success: false,
+                })
+            }
+        } catch (error) {
+            console.log(error)
+            res.status("400").json({
+                message: "An error ocurred trying to edit the comment 😖",
+                success: false,
+            })
+        }
+    },
+
+    deleteComment: async (req, res) => {
+        const { id } = req.params
+        try {
+            await Comment.findOneAndRemove({ _id: id })
+            res.status("200").json({
+                message: "Your comment has been deleted! 😌",
+                success: true,
+            })
+        } catch (error) {
+            console.log(error)
+            res.status("400").json({
+                message: "An error ocurred trying to delete the comment 😖",
                 success: false,
             })
         }
@@ -159,6 +227,7 @@ const commentController = {
             })
         }
     }
+
 }
 
 module.exports = commentController

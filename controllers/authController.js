@@ -20,14 +20,14 @@ const authController = {
         try{
             let auth = await new Auth(req.body).save()
             res.status(201).json({
-                message: "user has been created succesfuly",
+                message: "The user has been created! 🥳",
                 response: auth._id,
                 success: true
             })
         } catch(error){
             console.log(error);
             res.status(400).json({
-                message:"couldn't create user",
+                message:"Couldn't create user... 😧",
                 success: false
             })
         }
@@ -43,7 +43,7 @@ const authController = {
             users = await Auth.find()
             if(users){
                 res.status(200).json({
-                    message: "Users found",
+                    message: "These are all users! 🤩",
                     response: users,
                     success: true
                 })
@@ -103,7 +103,7 @@ const authController = {
                     user = await new Auth({name, lastName, mail, password:[password], photo, country,from:[from], role, logged, verified, code}).save();
                     sendMail(mail, code)
                     res.status(201).json({
-                        message: " User Signed Up from form",
+                        message: "User Signed Up from form 🤩",
                         success: true
                     })
                 } else{
@@ -111,14 +111,14 @@ const authController = {
                     verified: true;
                     user = await new Auth({name, lastName, mail, password:[password], role, photo, country,from:[from], logged, verified, code}).save();
                     res.status(201).json({
-                        message: " User Signed Up from " + from,
+                        message: "User Signed Up from " + from + " 🤩",
                         success: true
                     })
                 }
             } else {
                 if(user.from.includes(from)){
                     res.status(200).json({
-                        message: "User already exists",
+                        message: "User already exists 🧐",
                         success: false
                     })
                 } else{
@@ -127,7 +127,7 @@ const authController = {
                     user.verified = true;
                     await user.save()
                     res.status(200).json({
-                        message: "User Signed Up from " + from,
+                        message: "User Signed Up from " + from + " 🤩",
                         success: true
                     })
                 }
@@ -135,7 +135,7 @@ const authController = {
         } catch(error){
             console.log(error)
             res.status(400).json({
-                message: "couldn't sign up",
+                message: "Couldn't sign up 😖",
                 success: false
             })
         }
@@ -151,13 +151,16 @@ const authController = {
                 res.redirect(302, 'http://localhost:4000/')
             } else {
                 res.status(404).json({
-                    message: "couldn't verify email",
+                    message: "Couldn't verify your email 😖",
                     success: false
                 })
             }
         } catch(error) {
             console.log(error);
-            res.status(400).json()
+            res.status(400).json({
+                message: "Something went wrong 😖",
+                success: false
+            })            
         }
     },
         
@@ -168,7 +171,7 @@ const authController = {
             if (!user) {
                 res.status(404).json ({
                     success: false,
-                    message: "User doesn't exist, signup please"
+                    message: "User doesn't exist, signup please 😊"
                 })
             } else if(user.verified) {
                 const checkPass = user.password.filter(passwordElement => bcryptjs.compareSync(password, passwordElement))
@@ -186,15 +189,14 @@ const authController = {
                         user.logged = true
                         await user.save()
                         res.status(200).json({
-                            message: 'Welcome ' + user.name,
+                            message: 'Welcome ' + user.name + ' 😊'
                             response: {user: loginUser, token: token},
-                            // response: loginUser,
                             success: true,
                         })
                     }else{ 
                         res.status(400).json({
                             success: false,
-                            message: 'Username or password incorrect'
+                            message: 'Username or password incorrect 😖'
                         })
                     }
 
@@ -216,26 +218,26 @@ const authController = {
                         res.status(200).json({
                             success: true,
                             response: {user: loginUser},
-                            message: 'Welcome' + user.name
+                            message: 'Welcome' + user.name + ' 😊'
                         })
                     }else{
                         res.status(400).json({
                             success: false,
-                            message: 'Invalid credentials'
+                            message: 'Invalid credentials 🥴'
                         })
                     }
                 }
             } else {
                 res.status(401).json({
                     success: false,
-                    message: 'Verify your email and try again, please'
+                    message: 'Verify your email and try again, please 😊'
                 })
             }
         } catch (error) {
             console.log(error);
             res.status(400).json({
                 success: false,
-                message: 'Houston, we have a problem. Please try again'
+                message: 'Houston, we have a problem🥴 Please try again'
             })
         }
     },
@@ -250,19 +252,19 @@ const authController = {
                 await user.save()
                 res.status(200).json({
                     success: true,
-                    menssage: 'Logged out successfully'
+                    menssage: 'Logged out successfully 😌'
                 })
             } else {
                 res.status(404).json({
                     success: false,
-                    message: 'User not found'
+                    message:"Couldn't find user 🧐"
                 })
             }
         } catch (error) {
             console.log(error)
             res.status(400).json({
                 success: false,
-                message: 'Houston, we have a problem. Please try again'
+                message: 'Houston, we have a problem🥴 Please try again '
             })
         }
     },

@@ -17,14 +17,14 @@ const itineraryController = {
             let result = await validator.validateAsync({name, user, city, price, likes, tags, duration})
             let itinerary = await new Itinerary(result).save()
             res.status(201).json({
-                message: "itinerary has been created succesfuly",
+                message: "The itinerary has been created successfully! 🥳",
                 response: itinerary._id,
                 success: true
             })
         } catch(error){
             console.log(error);
             res.status(400).json({
-                message:"couldn't create itinerary",
+                message:"Couldn't create itinerary... 😧",
                 success: false
             })
         }
@@ -49,7 +49,7 @@ const itineraryController = {
                 await validator.validateAsync(result)
                 itinerary = await Itinerary.findOneAndUpdate({_id:id}, result, {new:true})
             res.status(200).json({
-                message: "itinerary updated",
+                message: "City updated successfully! 🥳",
                 response: itinerary,
                 success: true
                 })
@@ -61,14 +61,14 @@ const itineraryController = {
             }
         } else {
             res.status(404).json({
-                message: "Could't find itinerary",
+                message: "Couldn't find that itinerary... 🧐",
                 success: false
             })
         } 
     }catch(error) {
         console.log(error);
         res.status(400).json({
-            message: "An error has been ocurred",
+            message: "An error ocurred trying to update the itinerary 😖",
             success: false
         })
     }
@@ -81,7 +81,8 @@ const itineraryController = {
             let itinerary = await Itinerary.findOneAndDelete({_id:id})
             if(itinerary.user === id || role === "admin"){
                 res.status(200).json({
-                    message: "itinerary delete" + id,
+                    message: "itinerary deleted successfully! 🥳",
+                    response: itinerary_id,
                     success: true,
                 })
             } else {
@@ -93,7 +94,7 @@ const itineraryController = {
         } catch(error){
             console.log(error)
             res.status(400).json({
-                message: "error",
+                message: "An error ocurred trying to delete the itinerary 😖",
                 success: false
             })
         }
@@ -106,20 +107,20 @@ const itineraryController = {
             let itinerary = await Itinerary.findOne({_id:id})
             if(itinerary){
                 res.status(200).json({
-                    message: "found itinerary",
+                    message: "This is the itinerary you were looking for 🤩",
                     response: itinerary,
                     success: true
                 })
             } else {
                 res.status(400).json({
-                    message: "couldn't find itinerary",
+                    message: "Couldn't find that itinerary... 🧐",
                     success: false
                 })
             }
         } catch(error){
             console.log(error)
             res.status(400).json({
-                message: "Error",
+                message: "An error ocurred trying to get the itinerary 😖",
                 success: false
             })
         }
@@ -140,20 +141,20 @@ const itineraryController = {
             .populate("user",{name:1, lastName:1, photo:1})
             if (itineraries) {
                 res.status("200").json({
-                    message: "These are the itineraries",
+                    message: "These are all the itineraries 🤩",
                     response: itineraries,
                     success: true,
             })
             } else {
                 res.status("404").json({
-                    message: "Could't found any itineraries",
+                    message: "Couldn't find any itinerary 🧐",
                     success: false,
                 })
             }
         } catch (error) {
             console.log(error)
             res.status("400").json({
-                message: "Error",
+                message: "An error ocurred trying to get the itineraries 😖",
                 success: false,
             })
         }
