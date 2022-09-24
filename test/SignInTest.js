@@ -1,6 +1,5 @@
 const request = require('supertest')
 const app = require('../app')
-const { deleteOne } = require('../models/User')
 
  describe('POST /auth/signin', function () {
     it('Must respond with the name', function(){
@@ -9,7 +8,7 @@ const { deleteOne } = require('../models/User')
             .send({
             mail:"dwayne.johnson@gmail.com",
             password: "theRock",
-          
+            role: "user"
             })  
             .then(response => {
                 city = response.body.name
@@ -20,7 +19,7 @@ const { deleteOne } = require('../models/User')
 
     it('Must respond with 200 status code', function(done){
         request(app)
-            .post('/signin')
+            .post('/auth/signin')
             .send({
                 mail:"dwayne.johnson@gmail.com",
                 password: "theRock",
@@ -33,7 +32,7 @@ const { deleteOne } = require('../models/User')
 
     it('Must respond with 404 status code', function(done){
         request(app)
-            .post('/singin')
+            .post('/auth/signin')
             .send({})
             .expect(404, done)
           

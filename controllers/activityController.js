@@ -77,7 +77,57 @@ const activityController = {
                 success: false,
             })
         }
+    },
+
+    editActivity: async (req, res) => {
+        const { id } = req.params
+        try {
+            let activity = await Activity.findOne({_id:id})
+            if (activity) {
+            activity = await Activity.findOneAndUpdate({ _id: id }, req.body, { new: true })
+                res.status(200).json({
+                    message: "Your activity was edited successfully! 🤩",
+                    success: true,
+                })
+            } else {
+                res.status(404).json({
+                    message: "Couldn't find the activity you wanted to edit... 🥴",
+                    success: false,
+                })
+            }
+        } catch (error) {
+            console.log(error)
+            res.status(400).json({
+                message: "An error ocurred trying to edit the activity 😖",
+                success: false,
+            })
+        }
+    },
+    deleteActivity: async (req, res) => {
+        const { id } = req.params
+        try {
+            let activity = await Activity.findOne({_id:id})
+            if (activity) {
+            await Activity.findOneAndDelete({ _id: id })
+            res.status(200).json({
+                message: "Your activity has been deleted! 😌",
+                success: true,
+            })
+        } else {
+            res.status(404).json({
+                message: "Could't find the activity you wanted to delete... 🥴",
+                success: false
+            })
+        }
+        } catch (error) {
+            console.log(error)
+            res.status(400).json({
+                message: "An error ocurred trying to delete the activity 😖",
+                success: false,
+            })
+        }
     }
+
 }
 
 module.exports = activityController
