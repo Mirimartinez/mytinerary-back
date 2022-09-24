@@ -1,15 +1,31 @@
 const CityModel = require ("../models/City.js")
+const joi = require('joi')
+const validator = joi.object({
+    city: joi.string().required(),
+    country: joi.string().required(),
+    photo: joi.string().uri().required(),
+    population: joi.number().integer().min(1000).max(1000000000).required(),
+    foundation: joi.date().max(new Date()).required(),
+})
 
 
 const cityController = {
     createCity: async(req,res)=> {
         try{
-            city = await new CityModel(req.body).save()
-            res.status(201).json({
-                message:'City created',
-                response: city._id,
-                success: true,
-            })
+            let result = await validator.validateAsync(req.body)
+            if(req.user.role === "admin"){
+                city = await new CityModel(result).save()
+                res.status(201).json({
+                    message:'City created',
+                    response: city._id,
+                    success: true,
+                })
+            } else {
+                res.status("401").json({
+                    message: "Unauthorized",
+                    success: true,
+                })
+            }
         } catch (error){
             console.log(error)
             res.status(400).json({
@@ -21,28 +37,42 @@ const cityController = {
 
 updateCity: async (req, res) => {
     const {id} = req.params
+    const {role} = req.user
+    const {city, country, photo, population, foundation} = req.body
+    console.log(req.body);
+    let putCity = {}
+    let currentCity
     try{
-        let city = await CityModel.findOneAndUpdate({_id:id}, req.body, {new: true})
-            if(city){
-            res.status(200).json({
-                message: "City edited",
-                response:city,
-                success: true
-                })
-            }else{
+        if (putCity) {
+            let currentCity =  await CityModel.findOne({_id:id})
+            let result = await validator.validateAsync(req.body)
+            if (role === "admin") {
+                putCity  = await CityModel.findOneAndUpdate({_id:id}, result, {new: true})
+                res.status(200).json({
+                    message: "City edited",
+                    response:putCity,
+                    success: true
+                    })
+                }else{
+                    res.status(401).json({
+                        message: "Unauthorized",
+                        success: true
+                    })
+                }
+            } else {
                 res.status(404).json({
-                    message: "Could't find city",
-                    success: false
+                    message: "Could not find the city.",
+                    success: false,
                 })
             }
-    } catch(error){
-        console.log(error)
-        res.status(400).json({
-            message: "Could't find city",
-            success: false
-        })
-    }
-},
+            } catch(error){
+            console.log(error)
+            res.status(400).json({
+                message: "Could't find city",
+                success: false
+            })
+        }            
+    },
 
 
 removeCity: async(req, res) =>{
