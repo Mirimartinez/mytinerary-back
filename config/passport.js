@@ -1,15 +1,16 @@
 const passport = require('passport')
 const passportJwt = require('passport-jwt')
-const {SECRET_JWT} = process.env
+const {KEY_JWT} = process.env
 const Auth = require('../models/User')
 
 passport.use(
     new passportJwt.Strategy(
         {
             jwtFromRequest: passportJwt.ExtractJwt.fromAuthHeaderAsBearerToken(),
-            secretOrKey: SECRET_JWT
+            secretOrKey: KEY_JWT
         },
         async (jwt_payload, done) => {
+            console.log(jwt_payload);
             try{
                 let user = await Auth.findOne({_id:jwt_payload.id})
                 if(user){
@@ -33,4 +34,6 @@ passport.use(
         
     )
 
+
 )
+module.exports = passport
