@@ -6,13 +6,13 @@ const schema = new mongoose.Schema({
         city:{
             type: String, 
             required: true,
-            minlength: 5,
+            minlength: 1,
             maxlength: 100
         },
         country:{
             type: String, 
             required: true,
-            minlength: 6,
+            minlength: 1,
             maxlength: 50
         },
         photo:{
