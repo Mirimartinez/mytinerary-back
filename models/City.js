@@ -2,10 +2,12 @@ const mongoose = require ('mongoose')
 
 
 const schema = new mongoose.Schema({
-
-        city:{type: String, required: true},
-        country:{type: String, required: true},
-        photo:{type: String, required: true},
+        city:{type: String, required: true, minlength: 1, maxlength: 100},
+        country:{type: String, required: true, minlength: 1, maxlength: 100},
+        photo:{type: String, required: true, validate: function (value) {
+                if (! value.startsWith('http')) {throw new Error('URL must be start with http')}}},
+        latitude:{type: Number, required: true},
+        longitude: {type: Number, required: true},
         population:{type: Number, required: true},
         foundation:{type: Date, required: true}
 })
